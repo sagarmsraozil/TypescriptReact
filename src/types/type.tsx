@@ -1,3 +1,4 @@
+import { AxiosRequestHeaders, Method } from 'axios';
 import { ReactNode } from 'react';
 
 export type ProductType<T> = {
@@ -30,14 +31,15 @@ export type StockAndAmountType = {
 export type ProductPropTypes = {
   product: ProductType<number>;
   index: number;
-  handleClick: (index: number) => void;
+  handleClick: (index: number) => void; // eslint-disable-line
 };
 
-export type AxiosType = {
-  method: string;
-  endPoint: string;
-  data: object;
-  queryParams: object;
+// eslint-disable-next-line
+export type AxiosType<T = any, D = any> = {
+  method?: Method;
+  endPoint?: string;
+  data?: T;
+  queryParams?: D;
   requiresAuth?: boolean;
-  additionalHeaders: object;
+  additionalHeaders?: AxiosRequestHeaders;
 };

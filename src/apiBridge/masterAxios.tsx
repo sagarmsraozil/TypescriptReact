@@ -13,7 +13,7 @@ export const getAPIData = async (
     requiresAuth: false,
     additionalHeaders: {},
   } as TYPES.AxiosType
-):Promise<object> => {
+): Promise<object | undefined | null> => {
   try {
     const apiInfos = Object.assign({}, apiDetails);
 
@@ -37,6 +37,6 @@ export const getAPIData = async (
 
     return response.data;
   } catch (err) {
-    console.log(err);
+    return null;
   }
 };
